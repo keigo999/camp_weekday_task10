@@ -1,0 +1,6 @@
+<%= form_with model: @area, local: true do |f| %>
+  <div>
+    <%= f.label "検索" %>
+    <p><%= f.text_field :zipcode %></p>
+  </div>
+<% end %>
