@@ -3,7 +3,14 @@ class AreasController < ApplicationController
   end
 
   def new
-    @area = Area.new(area_params)
+    @area = Area.new
+  end
+
+  def search
+    @area = Area.new
+    uri = URI.parse("http://zipcloud.ibsnet.co.jp/api/search?zipcode=#{@area}")
+    @area2 = Net::HTTP.get_response(uri)
+    redirect_to 
   end
 
   private
