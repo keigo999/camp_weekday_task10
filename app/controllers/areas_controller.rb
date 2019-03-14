@@ -1,5 +1,7 @@
 class AreasController < ApplicationController
   def index
+    render :layout => nil
+    @area = Area.all
   end
 
   def search_get
@@ -19,6 +21,7 @@ class AreasController < ApplicationController
       @kana1 = @result["results"][0]["kana1"]
       @kana2 = @result["results"][0]["kana2"]
       @kana3 = @result["results"][0]["kana3"]
+
       render "new"
     end
   end
@@ -26,13 +29,13 @@ class AreasController < ApplicationController
   def create
     @area = Area.new(area_params)
     if @area.save
-      redirect_to ("/area")
+      redirect_to ("/")
     end
   end
 
   private
 
   def area_params
-    params.require(:area).permit(:zipcode, :prefcode, :address1, :address2, :address3, :kana1, :kana2, :kana3)
+    params.require(:area).permit(:zipcode, :prefcode, :address1, :address2, :address3, :kana1, :kana2, :kana3, :introducation)
   end
 end
