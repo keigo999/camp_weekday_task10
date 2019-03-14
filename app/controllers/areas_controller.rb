@@ -1,14 +1,13 @@
 class AreasController < ApplicationController
   def index
-    render :layout => nil
     @area = Area.all
   end
 
   def search_get
-    @area = Area.new
   end
 
   def search
+    @area = Area.new
     uri = URI.parse("http://zipcloud.ibsnet.co.jp/api/search?zipcode=#{params[:zipcode]}")
     response = Net::HTTP.get_response(uri)
     if response
