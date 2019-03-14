@@ -1,10 +1,52 @@
-<%= form_with url: areas_search_path, method: :post, local: true  do |f| %>
-  <div>
-    <h3 class="text-center">エリア検索</h3>
-      <div class="text-center">
-        <%= f.label "検索" %>
-        <p><%= f.text_field :zipcode %></p>
-      </div>
-    <%= f.submit "検索" %>
-  </div>
+<%= form_with model: @area, url: areas_path, method: :patch, local: true  do |f| %>
+    <div>
+      <p><%= f.label "ZipCode" %></p>
+      <p><%= f.text_field :zipcode, value: @zipcode  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "Prefcode" %></p>
+      <p><%= f.text_field :prefcode, value: @prefcode   %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "Address1" %></p>
+      <p><%= f.text_field :address1, value: @address1  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "kana1" %></p>
+      <p><%= f.text_field :kana1, value: @kana1  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "Address2" %></p>
+      <p><%= f.text_field :address2, value: @address2  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "kana2" %></p>
+      <p><%= f.text_field :kana2, value: @kana2  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "Address3" %></p>
+      <p><%= f.text_field :address, value: @address3  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "kana3" %></p>
+      <p><%= f.text_field :kana3, value: @kana3  %></p>
+    </div>
+
+    <div>
+      <p><%= f.label "introducation" %></p>
+      <p><%= f.text_area :introducation %></p>
+    </div>
+
+    <%= f.submit "登録する" %>
 <% end %>
+
+
+
+
