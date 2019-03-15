@@ -1,5 +1,4 @@
 
-
   <div>
     <table class="table table-bordered table-striped">
       <thead>
@@ -12,12 +11,16 @@
           <th>introducation</th>
         </tr>
       </thead>
+    <% @areas.each do |area| %>
       <tbody>
         <tr>
-          <th>1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <th><%= area.id %></th>
+          <td><%= area.zipcode %></td>
+          <td><%= area.prefcode %></td>
+          <td><%= area.address1 %></td>
+          <td><%= area.kana1 %></td>
+          <td><%= area.zipcode %></td>
         </tr>
       </tbody>
+    <% end %>
   </div>

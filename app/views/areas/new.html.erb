@@ -1,3 +1,9 @@
+<div>
+  <% @area.errors.full_messages.each do |messages| %>
+    <p><%= messages  %></p>
+  <% end %>
+</div>
+
 <div class = "w-50 mx-auto">
   <h2>エリア登録</h2>
   <%= form_with model: @area, url: areas_path, method: :post, local: true  do |f| %>
@@ -48,7 +54,7 @@
         </div>
       </div>
 
-      <%= f.submit "検索", class:"btn btn-primary btn-block" %>
+      <%= f.submit "登録", class:"btn btn-primary btn-block" %>
   <% end %>
 </div>
 

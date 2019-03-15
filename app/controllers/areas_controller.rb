@@ -1,6 +1,6 @@
 class AreasController < ApplicationController
   def index
-    @area = Area.all
+    @areas = Area.all
   end
 
   def search_get
@@ -29,6 +29,8 @@ class AreasController < ApplicationController
     @area = Area.new(area_params)
     if @area.save
       redirect_to ("/")
+    else
+      render "new"
     end
   end
 
