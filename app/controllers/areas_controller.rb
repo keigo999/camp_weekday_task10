@@ -33,7 +33,10 @@ class AreasController < ApplicationController
   def create
     @area = Area.new(area_params)
     if @area.save
+      flash[:success] = "地域を登録しました"
       redirect_to ("/")
+    else
+      render "new"
     end
   end
 
