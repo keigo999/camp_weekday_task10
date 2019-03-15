@@ -10,8 +10,8 @@ class AreasController < ApplicationController
     @area = Area.new
     uri = URI.parse("http://zipcloud.ibsnet.co.jp/api/search?zipcode=#{params[:zipcode]}")
     response = Net::HTTP.get_response(uri)
-    if response
-      @result = JSON.parse(response.body)
+    @result = JSON.parse(response.body) if response
+    if @result["message"] == nil
       @zipcode = @result["results"][0]["zipcode"]
       @prefcode = @result["results"][0]["prefcode"]
       @address1 = @result["results"][0]["address1"]
@@ -20,14 +20,20 @@ class AreasController < ApplicationController
       @kana1 = @result["results"][0]["kana1"]
       @kana2 = @result["results"][0]["kana2"]
       @kana3 = @result["results"][0]["kana3"]
-
-      render "new"
+      render "new" 
+    elsif @result["message"] == "必須パラメータが指定されていません。"
+      @error = @result["message"]
+      render "search_get"
+    elsif @result["message"] == "パラメータ「郵便番号」の桁数が不正です。"
+      @error = @result["message"]
+      render "search_get"
     end
   end
 
   def create
     @area = Area.new(area_params)
     if @area.save
+      flash[:notice] = "地域を登録しました。"
       redirect_to ("/")
     else
       render "new"

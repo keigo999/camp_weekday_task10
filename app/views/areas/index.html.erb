@@ -1,5 +1,15 @@
-
-  <div>
+<% if flash[:notice] %>
+  <div class="col-md-12">
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+<% end %>
+  
+<div>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
@@ -23,4 +33,5 @@
         </tr>
       </tbody>
     <% end %>
-  </div>
+  <%= f.submit "検索", class:"btn btn-primary btn-block" %>
+</div>
