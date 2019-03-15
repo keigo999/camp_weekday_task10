@@ -1,29 +1,15 @@
 <div class = "w-50 mx-auto">
-      <% if @area.errors.any? %>
-        <div class = "alert alert-danger text-center" role="alert">
-          <p>
-          <%= messages %>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          </p>
-        </div>
-      <% end %>
-</div>
-
-
-
+  <h2 class = "text-center">エリア登録</h2>
   <%= form_with model: @area, url: areas_path, method: :post, local: true  do |f| %>
-      <div class = "mw-30 mt-5">
-      <h1 class = "text-center">エリア登録</h1>
+      <div class = "mw-30">
         <div class =  "form-group" >
           <%= f.label "ZipCode" %>
-          <p><%= f.text_field :zipcode, class:"form-control", value: @zipcode, readonly: true %></p>
+          <p><%= f.text_field :zipcode, class:"form-control", value: @zipcode, readonly: true  %></p>
         </div>
 
         <div  class = "form-group" >
           <%= f.label "Prefcode" %>
-          <p><%= f.text_field :prefcode,  class:"form-control", value: @prefcode, readonly: true   %></p>
+          <p><%= f.text_field :prefcode,  class:"form-control", value: @prefcode, readonly: true  %></p>
         </div>
 
         <div  class = "form-group" >
@@ -62,9 +48,10 @@
         </div>
       </div>
 
+      <%= f.submit "検索", class:"btn btn-primary btn-block" %>
   <% end %>
-  </div>
 </div>
+
 
 
 
