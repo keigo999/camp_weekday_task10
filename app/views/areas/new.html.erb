@@ -1,63 +1,65 @@
 <div class = "w-50 mx-auto">
-    <% @area.errors.full_messages.each do |messages| %>
-    <div class="alert alert-danger" role="alert">
-      <%= "Validation failed:  #{messages}"  %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    <% end %>
-  </div>
-  <h2 class = "text-center">エリア登録</h2>
-  <%= form_with model: @area, url: areas_path, method: :post, local: true  do |f| %>
-      <div class = "mw-30">
-        <div class =  "form-group" >
+  <div class = "mw-30">
+    <%= form_with model: @area, url: areas_path, method: :post, local: true  do |f| %>
+            <% @area.errors.full_messages.each do |messages| %>
+              <div class="alert alert-danger" role="alert">
+                <%= "Validation failed:  #{messages}"  %>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+            <% end %>
+
+        <h2 class = "text-center">エリア登録</h2>
+
+        <div class =  "form-group">
           <%= f.label "ZipCode" %>
-          <p><%= f.text_field :zipcode, class:"form-control", value: @zipcode, readonly: true  %></p>
+          <p><%= f.text_field :zipcode, class:"form-control", value: @area.zipcode, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "Prefcode" %>
-          <p><%= f.text_field :prefcode,  class:"form-control", value: @prefcode, readonly: true  %></p>
+          <p><%= f.text_field :prefcode,  class:"form-control", value: @area.prefcode, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "Address1" %>
-          <p><%= f.text_field :address1,  class:"form-control", value: @address1, readonly: true  %></p>
+          <p><%= f.text_field :address1,  class:"form-control", value: @area.address1, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "kana1" %>
-          <p><%= f.text_field :kana1,  class:"form-control", value: @kana1, readonly: true  %></p>
+          <p><%= f.text_field :kana1,  class:"form-control", value: @area.kana1, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "Address2" %>
-          <p><%= f.text_field :address2,  class:"form-control", value: @address2, readonly: true  %></p>
+          <p><%= f.text_field :address2,  class:"form-control", value: @area.address2, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "kana2" %>
-          <p><%= f.text_field :kana2,  class:"form-control", value: @kana2, readonly: true  %></p>
+          <p><%= f.text_field :kana2,  class:"form-control", value: @area.kana2, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "Address3" %>
-          <p><%= f.text_field :address,  class:"form-control", value: @address3, readonly: true  %></p>
+          <p><%= f.text_field :address,  class:"form-control", value: @area.address3, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "kana3" %>
-          <p><%= f.text_field :kana3,  class:"form-control", value: @kana3, readonly: true  %></p>
+          <p><%= f.text_field :kana3,  class:"form-control", value: @area.kana3, readonly: true  %></p>
         </div>
 
-        <div  class = "form-group" >
+        <div  class = "form-group">
           <%= f.label "introducation" %>
           <p><%= f.text_area :introducation,  class:"form-control" %></p>
         </div>
-      </div>
 
-      <%= f.submit "検索", class:"btn btn-primary btn-block" %>
-  <% end %>
+        <%= f.submit "検索", class:"btn btn-primary btn-block" %>
+    <% end %>
+  </div>
 </div>
 
 

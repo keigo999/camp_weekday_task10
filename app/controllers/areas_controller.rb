@@ -1,4 +1,6 @@
 class AreasController < ApplicationController
+  include AreasHelper
+
   def index
     @areas = Area.all
   end
@@ -11,23 +13,7 @@ class AreasController < ApplicationController
     uri = URI.parse("http://zipcloud.ibsnet.co.jp/api/search?zipcode=#{params[:zipcode]}")
     response = Net::HTTP.get_response(uri)
     @result = JSON.parse(response.body)
-    if @result["message"] == nil
-      @zipcode = @result["results"][0]["zipcode"]
-      @prefcode = @result["results"][0]["prefcode"]
-      @address1 = @result["results"][0]["address1"]
-      @address2 = @result["results"][0]["address2"]
-      @address3 = @result["results"][0]["address3"]
-      @kana1 = @result["results"][0]["kana1"]
-      @kana2 = @result["results"][0]["kana2"]
-      @kana3 = @result["results"][0]["kana3"]
-      render "new"
-    elsif @result["message"] == "必須パラメータが指定されていません。"
-      flash[:danger] = @result["message"]
-      render "search_get"
-    elsif @result["message"] == "パラメータ「郵便番号」の桁数が不正です。"
-      flash[:danger] = @result["message"]
-      render "search_get"
-    end
+    get_params
   end
 
   def create
