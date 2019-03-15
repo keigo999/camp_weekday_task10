@@ -18,5 +18,5 @@ module AreasHelper
         flash[:danger] = @result["message"]
         render "search_get"
       end
-    end
+  end
 end
