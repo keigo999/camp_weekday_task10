@@ -9,30 +9,30 @@
   </div>
 <% end %>
 
-  <div>
-    <table class="table table-bordered table-striped">
-      <thead>
+<div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>ZipCode</th>
+        <th>PrefCode</th>
+        <th>Address</th>
+        <th>kana   </th>
+        <th>introducation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @areas.each do |area| %>
         <tr>
-          <th>ID</th>
-          <th>ZipCode</th>
-          <th>PrefCode</th>
-          <th>Address</th>
-          <th>kana   </th>
-          <th>introducation</th>
+          <th><%= area.id %></th>
+          <td><%= area.zipcode %></td>
+          <td><%= area.prefcode %></td>
+          <td><%= "#{area.address1}#{area.address2}#{area.address3}" %></td>
+          <td><%= "#{area.kana1}#{area.kana2}#{area.kana3}" %></td>
+          <td><%= area.introducation %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @areas.each do |area| %>
-          <tr>
-            <th><%= area.id %></th>
-            <td><%= area.zipcode %></td>
-            <td><%= area.prefcode %></td>
-            <td><%= area.address1 %></td>
-            <td><%= area.kana1 %></td>
-            <td><%= area.introducation %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
- <p> <%= link_to "検索する", areas_search_path, class:"btn btn-primary btn-block" %></p>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<p> <%= link_to "検索する", areas_search_path, class:"btn btn-primary btn-block" %></p>
